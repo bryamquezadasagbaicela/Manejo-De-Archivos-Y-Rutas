@@ -491,7 +491,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_menuNuevoActionPerformed
 
     private void MenuRenombrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRenombrarActionPerformed
-
+        //permite al usuario cambiar el nombre del archivo
         String archivoSeleccionado = null;
         if (!lstArchivos.isSelectionEmpty()) {
             archivoSeleccionado = String.valueOf(lstArchivos.getSelectedValue());
@@ -513,7 +513,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuRenombrarActionPerformed
 
     private void menuNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoArchivoActionPerformed
-        //Permite crear una nueva carpeta en el directorio seleccionado
+        //permite al usuario crear una nueva carpeta
         if (lstDirectorios.getSelectedIndex() != -1) {
             String seleccion = lstDirectorios.getSelectedValue().toString();
             String rutaCompleta = ruta + "\\" + seleccion;
@@ -533,6 +533,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_menuNuevoArchivoActionPerformed
 
     private void menuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarActionPerformed
+        //metodo aplicado para eliminar ya sea un archivo, una carpeta o una carpeta con archivos.
         String archivoSeleccionado = null;
         boolean isValid = true;
         if (!lstArchivos.isSelectionEmpty()) {
@@ -557,7 +558,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_menuEliminarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-
+        //boton para salir del programa
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
