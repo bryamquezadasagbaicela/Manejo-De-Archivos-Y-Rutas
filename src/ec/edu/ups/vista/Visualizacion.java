@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @author QuezadaBryam
  */
 public class Visualizacion extends javax.swing.JFrame {
-
+//declaracion de atributos
     private String ruta;
     private String rutaPasada;
     private String anterior;
