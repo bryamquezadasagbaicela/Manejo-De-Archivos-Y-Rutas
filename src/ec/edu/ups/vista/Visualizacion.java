@@ -340,7 +340,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
+        // metodo aplicado para hacer funcionar el boton hacia atras
         String regresar = txtRuta.getText();
         char r;
         String dato = "";
@@ -357,6 +357,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        
         Listas();
         /*
          File ruta;
