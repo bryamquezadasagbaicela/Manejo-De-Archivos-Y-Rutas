@@ -357,7 +357,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        
+        // imprime las listas que se encuentren en la ruta ingresada
         Listas();
         /*
          File ruta;
