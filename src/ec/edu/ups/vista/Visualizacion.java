@@ -11,9 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-
 import java.text.DecimalFormat;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,9 +21,13 @@ import java.util.logging.Logger;
  */
 public class Visualizacion extends javax.swing.JFrame {
 //declaracion de atributos
+    DefaultListModel direc;
+    DefaultListModel arch;
+    DefaultListModel oculto;
     private String ruta;
     private String rutaPasada;
-    private String anterior;
+    private String atras;
+    
 
     /**
      * Creates new form Visualizacio
@@ -72,17 +74,25 @@ public class Visualizacion extends javax.swing.JFrame {
         }
 
     }
+    public void mostrarInformacionArchivoSeleccionado(String rutaSeleccionada) {
+        //obtengo la fecha de ultima modificacion
+        File archivoSeleccionado = new File(rutaSeleccionada);
+        long fechaMilisegundos = archivoSeleccionado.lastModified();
+        Date fecha = new Date(fechaMilisegundos);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaTexto = formato.format(fecha);
+        txtModificacion.setText("Fecha de ultima modificacion: " + fechaTexto);
 
-    public static long tamañoDirectorio(File directory) {
-        long length = 0;
-        for (File file : directory.listFiles()) {
-            if (file.isFile()) {
-                length += file.length();
-            } else {
-                length += tamañoDirectorio(file);
-            }
-        }
-        return length;
+        //obtengo la ruta absoluta
+        String rutaAbsoluta = archivoSeleccionado.getAbsolutePath();
+        txtRAbsoluta.setText("Ruta absoluta: " + rutaAbsoluta);
+
+        //obtengo el tamano del archivo en kb
+        long tamanoEnBytes = archivoSeleccionado.length();
+        long tamanoEnKBytes = tamanoEnBytes / 1024l;
+
+        txtTamano.setText("Tamaño (Kb): " + tamanoEnKBytes);
+
     }
 
     /**
@@ -348,11 +358,11 @@ public class Visualizacion extends javax.swing.JFrame {
             r = regresar.charAt(i);
             dato = r + dato;
             if (r == '\\') {
-                anterior = regresar.replace(dato, "");
+                atras = regresar.replace(dato, "");
                 i = 0;
             }
         }
-        txtRuta.setText(anterior);
+        txtRuta.setText(atras);
         Listas();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
@@ -418,8 +428,8 @@ public class Visualizacion extends javax.swing.JFrame {
             Date fechaModificacion = new Date(modificacion);
 
             txtModificacion.setText(simpleDateFormat.format(fechaModificacion));
-            long length = tamañoDirectorio(fichero);
-            txtTamano.setText(Math.round(Math.ceil(length / 1024.0)) + " Kb");
+            //long length = mostrarInformacionArchivoSeleccionado();
+            //txtTamano.setText(Math.round(Math.ceil(length / 1024.0)) + " Kb");
 
             lstDirectorios.addMouseListener(new java.awt.event.MouseAdapter() {
 
@@ -428,7 +438,7 @@ public class Visualizacion extends javax.swing.JFrame {
                         String rut = txtRuta.getText();
                         if (!lstDirectorios.isSelectionEmpty()) {
                             String selec = lstDirectorios.getSelectedValue().toString();
-                            anterior = selec;
+                            atras = selec;
                             String rutfin = rut + "\\" + selec;
                             txtRuta.setText(rutfin);
                             Listas();
@@ -453,7 +463,6 @@ public class Visualizacion extends javax.swing.JFrame {
             Date fechaModificacion = new Date(modificacion);
 
             txtModificacion.setText(simpleDateFormat.format(fechaModificacion));
-
             txtTamano.setText(Math.round(Math.ceil(fichero.length() / 1024.0)) + " Kb");
         }
     }//GEN-LAST:event_lstArchivosValueChanged
