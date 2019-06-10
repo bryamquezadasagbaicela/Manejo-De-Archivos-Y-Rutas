@@ -405,7 +405,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void lstDirectoriosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstDirectoriosValueChanged
-        // Te muestra los datos de un directorio seleccionado
+        //muestra los directorios de la ruta ingresada
         if (!lstDirectorios.isSelectionEmpty()) {
             String seleccion = lstDirectorios.getSelectedValue().toString();
             String rutaCompleta = ruta + "\\" + seleccion;
@@ -440,7 +440,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_lstDirectoriosValueChanged
 
     private void lstArchivosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstArchivosValueChanged
-
+        //muestra los archivos del directorio seleccionado
         if (!lstArchivos.isSelectionEmpty()) {
             String seleccion = lstArchivos.getSelectedValue().toString();
             String rutaCompleta = ruta + "\\" + seleccion;
@@ -459,6 +459,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_lstArchivosValueChanged
 
     private void lstOcultosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstOcultosValueChanged
+        //muestra los archivos ocultos del directorio selecionado
         String seleccion = lstOcultos.getSelectedValue().toString();
         String rutaCompleta = ruta + "\\" + seleccion;
         txtRuta.setText(rutaCompleta);
@@ -475,7 +476,7 @@ public class Visualizacion extends javax.swing.JFrame {
     }//GEN-LAST:event_lstOcultosValueChanged
 
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
-
+        //permite crear un nuevo archivo
         String nombreArchivo = JOptionPane.showInputDialog("INGRESE NOMBRE DEL NUEVO ARCHIVO:");
         String ruta = txtRuta.getText().trim() + "\\" + nombreArchivo;
 
